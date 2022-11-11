@@ -10,13 +10,13 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:auto-boj-commenter.helloWorld"
+    "onCommand:auto-boj-commenter.commentboj"
   ],
   "main": "./extension.js",
   "contributes": {
     "commands": [{
-      "command": "auto-boj-commenter.helloWorld",
-      "title": "Hello World"
+      "command": "auto-boj-commenter.commentboj",
+      "title": "Add BOJ Comment"
     }]
   },
   "scripts": {

@@ -1,33 +1,48 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
-
-/**
- * @param {vscode.ExtensionContext} context
- */
 function activate(context) {
-
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "auto-boj-commenter" is now active!');
-
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with  registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('auto-boj-commenter.helloWorld', function () {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from Auto BOJ commenter!');
+	let disposable = vscode.commands.registerCommand('auto-boj-commenter.commentboj', function () {
+		let editor = vscode.window.activeTextEditor;
+		let commentBlock;
+		let lang = editor.document.languageId;
+		switch (true) {
+			case /go/.test(lang):
+				commentBlock = '//';
+				break;
+			case /^c.*/.test(lang):
+				commentBlock = '//';
+				break;
+			case /^java.*/.test(lang):
+				commentBlock = "//";
+				break;
+			case /ruby/.test(lang):
+				commentBlock = "#";
+				break;
+			case /python/.test(lang):
+				commentBlock = "#";
+				break;
+			default:
+				commentBlock = '?';
+				break;
+		}
+		console.log(lang);
+		if (commentBlock === '?') {
+			vscode.window.showErrorMessage('지원하지 않는 언어입니다.');
+			editor = null;
+		}
+		if (editor) {
+			//const doc = editor.document;
+			editor.edit(editBuilder => {
+				editBuilder.insert(new vscode.Position(0, 0), `${commentBlock} Hello World!\n`);
+			})
+		}
+		//vscode.window.showInformationMessage('Hello World from Auto BOJ commenter!');
 	});
 
 	context.subscriptions.push(disposable);
 }
 
-// This method is called when your extension is deactivated
 function deactivate() {}
 
 module.exports = {
