@@ -17,7 +17,15 @@
     "commands": [{
       "command": "auto-boj-commenter.commentboj",
       "title": "Add BOJ Comment"
-    }]
+    }],
+	"configuration": {
+		"title": "Auto BOJ Commenter",
+		"properties": {
+			"auto-boj-commenter.creator": {
+				"type": "string"
+			}
+		}
+	}
   },
   "scripts": {
     "lint": "eslint .",
