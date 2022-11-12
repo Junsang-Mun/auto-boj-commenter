@@ -47,6 +47,7 @@ function activate(context) {
 		}
 
 		function handleFulfilled(fulfill) {
+			let coolThing;
 			const config = vscode.workspace.getConfiguration('auto-boj-commenter');
 			const creator = config.get('creator');
 			const week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
@@ -56,11 +57,16 @@ function activate(context) {
 			const year = today.getFullYear();
 			const day = week[today.getDay()];
 			const fullToday = `${year}/${month}/${date} (${day})`;
+			if (config.get('enableAsciiArt')) {
+				coolThing = `${commentBlock} ██████╗  ██████╗      ██╗\n${commentBlock} ██╔══██╗██╔═══██╗     ██║\n${commentBlock} ██████╔╝██║   ██║     ██║\n${commentBlock} ██╔══██╗██║   ██║██   ██║\n${commentBlock} ██████╔╝╚██████╔╝╚█████╔╝\n${commentBlock} ╚═════╝  ╚═════╝  ╚════╝\n`;
+			} else {
+				coolThing = '';
+			}
 
 			if (editor) {
 				//const doc = editor.document;
 				editor.edit(editBuilder => {
-					editBuilder.insert(new vscode.Position(0, 0), `${commentBlock} ██████╗  ██████╗      ██╗\n${commentBlock} ██╔══██╗██╔═══██╗     ██║\n${commentBlock} ██████╔╝██║   ██║     ██║\n${commentBlock} ██╔══██╗██║   ██║██   ██║\n${commentBlock} ██████╔╝╚██████╔╝╚█████╔╝\n${commentBlock} ╚═════╝  ╚═════╝  ╚════╝\n${commentBlock} Created by: ${creator}\n${commentBlock} Created at: ${fullToday}\n${commentBlock} BOJ Number: ${fulfill}\n${commentBlock} https://boj.kr/${fulfill}\n\n`);
+					editBuilder.insert(new vscode.Position(0, 0), `${coolThing}${commentBlock} Created by: ${creator}\n${commentBlock} Created at: ${fullToday}\n${commentBlock} BOJ Number: ${fulfill}\n${commentBlock} https://boj.kr/${fulfill}\n\n`);
 				})
 			}
 		}

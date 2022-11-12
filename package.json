@@ -22,7 +22,13 @@
 		"title": "Auto BOJ Commenter",
 		"properties": {
 			"auto-boj-commenter.creator": {
-				"type": "string"
+				"type": "string",
+				"description": "Creator 란에 들어갈 이름을 입력하세요."
+			},
+			"auto-boj-commenter.enableAsciiArt": {
+				"type": "boolean",
+				"default": "true",
+				"description": "아스키 아트를 포함할지 여부를 체크해주세요."
 			}
 		}
 	}
