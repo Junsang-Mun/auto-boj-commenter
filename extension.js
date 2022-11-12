@@ -53,7 +53,7 @@ function activate(context) {
 		}
 
 		function handleFulfilled(fulfill) {
-			let coolThing;
+			let coolThing = '';
 			const config = vscode.workspace.getConfiguration('auto-boj-commenter');
 			const creator = config.get('creator');
 			const week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
@@ -65,8 +65,6 @@ function activate(context) {
 			const fullToday = `${year}/${month}/${date} (${day})`;
 			if (config.get('enableAsciiArt')) {
 				coolThing = `${commentBlock} ██████╗  ██████╗      ██╗\n${commentBlock} ██╔══██╗██╔═══██╗     ██║\n${commentBlock} ██████╔╝██║   ██║     ██║\n${commentBlock} ██╔══██╗██║   ██║██   ██║\n${commentBlock} ██████╔╝╚██████╔╝╚█████╔╝\n${commentBlock} ╚═════╝  ╚═════╝  ╚════╝\n`;
-			} else {
-				coolThing = '';
 			}
 
 			if (editor) {
