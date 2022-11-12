@@ -4,7 +4,7 @@
 
 백준 풀이 코드 맨 위에 누가 작성했는지, 언제 만들었는지 등 추적이 가능한 주석을 삽입합니다.
 
-![Main Feature](./static/preview_1.gif)
+![Main Feature](https://github.com/Junsang-Mun/auto-boj-commenter/blob/main/static/preview_1.gif?raw=true)
 
 ## Requirements
 
