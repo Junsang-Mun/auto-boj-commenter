@@ -15,7 +15,7 @@ function activate(context) {
 			case /go/.test(lang):
 				commentBlock = '//';
 				break;
-			case /c/.test(lang):
+			case /^c$/.test(lang):
 				commentBlock = '//';
 				break;
 			case /cpp/.test(lang):
