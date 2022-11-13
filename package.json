@@ -2,7 +2,8 @@
   "name": "auto-boj-commenter",
   "displayName": "Auto BOJ commenter",
   "description": "Add a comment which contains the question number, a direct link to the BOJ, date and creator.",
-  "version": "0.0.1",
+  "version": "0.1.0b",
+  "publisher": "JunsangMun",
   "repository": {
     "type": "git",
     "url": "https://github.com/Junsang-Mun/auto-boj-commenter.git"
